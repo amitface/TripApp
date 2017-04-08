@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.hackerearth.ixicode.tripapp.Models.TrendingPlaces.Flight;
 import com.hackerearth.ixicode.tripapp.R;
 
@@ -58,12 +61,22 @@ public class TrendingAdapter1 extends RecyclerView.Adapter<TrendingAdapter1.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Flight temp = flightList.get(position);
-        holder.imageTrendingAdapter1.setImageBitmap(null);
+        holder.tvTrendingAdapter1Name.setText(temp.getName());
+
 
             Glide.with(context).load(temp.getImage()).crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageTrendingAdapter1);//.thumbnail(0.5f)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL).listener(new RequestListener<String, GlideDrawable>() {
+                @Override
+                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
 
-        holder.tvTrendingAdapter1Name.setText(temp.getName());
+                @Override
+                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    return false;
+                }
+            }).into(holder.imageTrendingAdapter1);//.thumbnail(0.5f)
+
     }
 
     @Override
