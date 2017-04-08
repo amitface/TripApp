@@ -59,8 +59,10 @@ public class TrendingAdapter1 extends RecyclerView.Adapter<TrendingAdapter1.MyVi
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Flight temp = flightList.get(position);
         holder.imageTrendingAdapter1.setImageBitmap(null);
-        Glide.with(context).load(temp.getImage()).crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageTrendingAdapter1);//.thumbnail(0.5f)
+
+            Glide.with(context).load(temp.getImage()).crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageTrendingAdapter1);//.thumbnail(0.5f)
+
         holder.tvTrendingAdapter1Name.setText(temp.getName());
     }
 

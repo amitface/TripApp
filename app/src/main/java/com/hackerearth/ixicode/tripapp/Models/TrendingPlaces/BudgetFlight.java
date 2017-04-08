@@ -1,9 +1,11 @@
 
 package com.hackerearth.ixicode.tripapp.Models.TrendingPlaces;
 
-import java.util.List;
-import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
+import javax.annotation.Generated;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
@@ -35,6 +37,8 @@ public class BudgetFlight {
     private String mType;
     @SerializedName("url")
     private String mUrl;
+    @SerializedName("Downloaded")
+    private Boolean mDownloaded;
 
     public String getCityId() {
         return mCityId;
@@ -140,4 +144,11 @@ public class BudgetFlight {
         mUrl = url;
     }
 
+    public Boolean getmDownloaded() {
+        return mDownloaded;
+    }
+
+    public void setmDownloaded(Boolean mDownloaded) {
+        this.mDownloaded = mDownloaded;
+    }
 }
